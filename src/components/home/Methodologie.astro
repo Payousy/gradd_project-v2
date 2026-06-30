@@ -1,0 +1,48 @@
+---
+const steps = [
+  {
+    n: "01",
+    title: "Diagnostic et cadrage",
+    desc: "Analyse du contexte, des parties prenantes et des enjeux pour définir un cadre d'intervention précis et partagé."
+  },
+  {
+    n: "02",
+    title: "Collecte et production des données",
+    desc: "Enquêtes qualitatives et quantitatives, observations de terrain et exploitation des données existantes."
+  },
+  {
+    n: "03",
+    title: "Analyse et co-construction",
+    desc: "Analyse rigoureuse des résultats et restitution intermédiaire auprès des acteurs pour ajustement et validation."
+  },
+  {
+    n: "04",
+    title: "Recommandations et accompagnement",
+    desc: "Formulation de recommandations opérationnelles et appui à leur mise en œuvre effective."
+  },
+];
+---
+
+<section class="methodology-section">
+  <div class="container">
+    <div class="section-intro fade-up">
+      <span class="section-eyebrow">Notre approche</span>
+      <h2 class="section-title">Une méthodologie d'intervention en 4 étapes</h2>
+      <div class="gold-divider"></div>
+      <p class="section-lead">
+        Notre approche sociologique repose sur une méthodologie rigoureuse et
+        adaptée à chaque projet, garantissant des résultats fiables et pertinents.
+      </p>
+    </div>
+
+    <div class="steps-grid fade-up">
+      {steps.map(step => (
+        <div class="step-card">
+          <span class="step-number">{step.n}</span>
+          <h3>{step.title}</h3>
+          <p>{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

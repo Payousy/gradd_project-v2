@@ -1,0 +1,90 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: "/", label: "Accueil" },
+  { href: "/qui-sommes-nous", label: "Qui sommes-nous ?" },
+  { href: "/domaines-competences", label: "Compétences" },
+  { href: "/methodologie", label: "Méthodologie" },
+  { href: "/actions", label: "Actions" },
+];
+---
+
+<header class="site-header">
+  <div class="header-container">
+    <a href="/" class="logo-block" aria-label="GRADD — Accueil">
+      <span class="logo">GRADD</span>
+      <span class="logo-tagline">Études & Conseil</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <ul class="nav-list">
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class={currentPath === link.href ? "active" : ""}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/contact" class="nav-cta">Nous contacter</a>
+        </li>
+      </ul>
+    </nav>
+
+    <button
+      class="menu-toggle"
+      aria-label="Ouvrir le menu"
+      aria-controls="site-menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div id="site-menu" class="menu-overlay" aria-hidden="true">
+    <button class="close-menu" aria-label="Fermer le menu">×</button>
+    <ul class="overlay-nav-list">
+      {navLinks.map(link => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+      <li><a href="/contact" style="color: var(--color-gold)">Nous contacter</a></li>
+    </ul>
+  </div>
+
+  <script type="module">
+    const toggleButton = document.querySelector(".menu-toggle");
+    const closeButton = document.querySelector(".close-menu");
+    const menuOverlay = document.getElementById("site-menu");
+    const navLinks = document.querySelectorAll(".overlay-nav-list a");
+
+    if (toggleButton && closeButton && menuOverlay) {
+      toggleButton.addEventListener("click", () => {
+        const isActive = menuOverlay.classList.toggle("active");
+        menuOverlay.setAttribute("aria-hidden", String(!isActive));
+        toggleButton.setAttribute("aria-expanded", String(isActive));
+        document.body.style.overflow = isActive ? "hidden" : "";
+        if (isActive) navLinks[0]?.focus();
+      });
+
+      const close = () => {
+        menuOverlay.classList.remove("active");
+        menuOverlay.setAttribute("aria-hidden", "true");
+        toggleButton.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        toggleButton.focus();
+      };
+
+      closeButton.addEventListener("click", close);
+      navLinks.forEach(link => link.addEventListener("click", close));
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && menuOverlay.classList.contains("active")) close();
+      });
+    }
+  </script>
+</header>

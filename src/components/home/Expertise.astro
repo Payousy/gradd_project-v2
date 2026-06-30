@@ -1,0 +1,48 @@
+---
+const expertises = [
+  {
+    title: "Études formatives & analyses situationnelles",
+    desc: "Analyse approfondie des contextes sociaux, institutionnels et territoriaux pour éclairer la conception des projets de développement."
+  },
+  {
+    title: "Suivi-évaluation de projets et politiques publiques",
+    desc: "Dispositifs rigoureux permettant de mesurer les résultats, les effets et l'impact des interventions publiques."
+  },
+  {
+    title: "Études d'impact environnemental et social",
+    desc: "Évaluation des impacts sociaux et environnementaux pour assurer la conformité et la durabilité des projets."
+  },
+  {
+    title: "Recherche-action & marketing social",
+    desc: "Production de connaissances appliquées et accompagnement au changement à travers des approches participatives."
+  },
+  {
+    title: "Planification stratégique territoriale",
+    desc: "Appui à la définition de stratégies intégrant les enjeux sociaux, économiques et environnementaux."
+  },
+];
+---
+
+<section class="expertise-section">
+  <div class="container">
+    <div class="section-intro section-intro--center fade-up">
+      <span class="section-eyebrow">Nos expertises</span>
+      <h2 class="section-title">Des études qualitatives et quantitatives</h2>
+      <div class="gold-divider gold-divider--center"></div>
+      <p class="section-lead">
+        Selon vos objectifs, nous proposons une méthodologie adaptée, intégrant
+        des approches qualitatives, quantitatives ou hybrides pour des analyses
+        profondes et pertinentes.
+      </p>
+    </div>
+
+    <div class="grid-auto fade-up">
+      {expertises.map(e => (
+        <div class="expertise-card">
+          <h3>{e.title}</h3>
+          <p>{e.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

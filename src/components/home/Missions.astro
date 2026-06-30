@@ -1,0 +1,44 @@
+---
+const missions = [
+  {
+    title: "Politiques publiques",
+    desc: "Évaluation et analyse des politiques publiques sectorielles pour en mesurer l'impact, la pertinence et l'efficacité au regard des réalités locales."
+  },
+  {
+    title: "Projets de développement",
+    desc: "Suivi-évaluation de projets portés par des ONG, des collectivités ou des partenaires techniques et financiers."
+  },
+  {
+    title: "Études sociologiques",
+    desc: "Recherches qualitatives et quantitatives intégrant les dynamiques sociales, culturelles et territoriales propres aux contextes d'intervention."
+  },
+  {
+    title: "Appui stratégique",
+    desc: "Accompagnement des institutions dans la conception, l'adaptation et l'amélioration de leurs dispositifs d'action."
+  },
+];
+---
+
+<section class="missions-section">
+  <div class="container">
+    <div class="section-intro fade-up">
+      <span class="section-eyebrow" style="color: var(--color-gold)">Ce que nous faisons</span>
+      <h2 class="section-title" style="color: var(--color-white)">Nos missions</h2>
+      <div class="gold-divider"></div>
+      <p class="section-lead" style="color: rgba(255,255,255,0.7)">
+        GRADD intervient auprès des acteurs publics, des collectivités et des
+        partenaires au développement à travers une expertise sociologique
+        appliquée et contextualisée.
+      </p>
+    </div>
+
+    <div class="grid-auto fade-up">
+      {missions.map(m => (
+        <div class="mission-card">
+          <h3>{m.title}</h3>
+          <p>{m.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

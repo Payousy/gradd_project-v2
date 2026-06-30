@@ -1,0 +1,70 @@
+/* ── Reset & base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-base);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  margin: 0 0 var(--space-4);
+  color: var(--color-navy);
+}
+
+h1 { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); }
+h2 { font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+p {
+  margin: 0 0 var(--space-4);
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+a {
+  color: var(--color-blue-mid);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-navy);
+  text-decoration: underline;
+}
+
+ul, ol {
+  margin: 0;
+  padding-left: var(--space-6);
+}
+
+li {
+  margin-bottom: var(--space-2);
+  color: var(--color-muted);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+strong {
+  color: var(--color-text);
+  font-weight: 600;
+}

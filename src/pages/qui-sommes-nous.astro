@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../components/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Qui sommes-nous ? — GRADD"
+  description="Découvrez l'histoire, l'équipe et les valeurs du GRADD, cabinet d'études et conseil en développement durable au Sénégal."
+>
+  <div class="page-intro">
+    <div class="container">
+      <span class="section-eyebrow">Le cabinet</span>
+      <h1>Qui sommes-nous ?</h1>
+      <div class="gold-divider"></div>
+      <p class="section-lead">
+        GRADD est un cabinet d'études et de conseil né de l'initiative d'un groupe
+        de sociologues engagés, désireux de mettre leur expertise au service de
+        l'action publique et des politiques de développement.
+      </p>
+    </div>
+  </div>
+
+  <section class="section section--white">
+    <div class="container">
+      <div class="grid-2" style="gap: var(--space-16); align-items: start;">
+        <div>
+          <span class="section-eyebrow">Notre genèse</span>
+          <h2 class="section-title">Une réponse à un constat de terrain</h2>
+          <div class="gold-divider"></div>
+          <p>
+            La création de GRADD fait suite à plusieurs années d'expériences
+            professionnelles menées par ses fondateurs dans le domaine du
+            suivi-évaluation de politiques et de programmes de développement,
+            ainsi que dans la conduite de recherches pour le compte d'organisations
+            non gouvernementales et d'acteurs institutionnels.
+          </p>
+          <p>
+            Ces expériences de terrain ont mis en lumière un constat partagé :
+            bien que de nombreux projets soient initiés avec des objectifs
+            pertinents, les outils d'analyse et les approches méthodologiques
+            mobilisés demeurent souvent peu adaptés aux contextes socioculturels
+            locaux.
+          </p>
+          <p>
+            C'est face à ce constat que GRADD a été conçu comme un outil d'appui
+            stratégique et opérationnel, fondé sur des méthodes de recherche
+            appliquée rigoureuses, contextualisées et ancrées dans les réalités
+            locales.
+          </p>
+        </div>
+        <div>
+          <img
+            src="/images/journee_formation.jpg"
+            alt="Journée de formation GRADD"
+            style="border-radius: var(--radius-lg); width: 100%; height: 380px; object-fit: cover;"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--bg">
+    <div class="container">
+      <div class="section-intro section-intro--center">
+        <span class="section-eyebrow">Nos valeurs</span>
+        <h2 class="section-title">Ce qui guide notre action</h2>
+        <div class="gold-divider gold-divider--center"></div>
+      </div>
+
+      <div class="grid-auto">
+        {[
+          { v: "Rigueur scientifique", d: "Des analyses fondées sur des méthodes éprouvées et un cadrage théorique solide." },
+          { v: "Engagement éthique", d: "Indépendance de l'analyse, transparence des résultats, respect des acteurs de terrain." },
+          { v: "Pertinence contextuelle", d: "Des approches toujours adaptées aux spécificités sociales, culturelles et territoriales." },
+          { v: "Utilité sociale", d: "Des recommandations concrètes et opérationnelles au service des populations." },
+        ].map(item => (
+          <div class="card card--gold-bar">
+            <h3 style="font-size: var(--text-base); font-family: var(--font-base); font-weight: 700;">{item.v}</h3>
+            <p style="font-size: var(--text-sm); margin: 0;">{item.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Travaillons ensemble</h2>
+      <p>Vous avez un projet d'étude ou d'évaluation ? Contactez-nous.</p>
+      <a href="/contact" class="btn btn-primary" style="background-color: var(--color-gold); border-color: var(--color-gold); color: var(--color-navy)">
+        Prendre contact
+      </a>
+    </div>
+  </section>
+</BaseLayout>

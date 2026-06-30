@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../components/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const actualites = (await getCollection("actualites"))
+  .filter(a => a.data.published)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Actualités – GRADD" description="Les dernières actualités du Groupe de Recherche Appliqué au Développement Durable">
+  <h1>Actualités</h1>
+
+  <ul>
+    {actualites.map(actu => (
+      <li>
+        <h2>{actu.data.title}</h2>
+        <p>{actu.data.excerpt}</p>
+        <a href={`/actualites/${actu.slug}`}>Lire la suite</a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

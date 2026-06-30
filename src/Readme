@@ -1,0 +1,82 @@
+Struture globale: 
+gradd-site/
+├── public/
+│   └── images/
+│       └── logo.svg
+│
+├── src/
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Header.astro
+│   │   │   ├── Footer.astro
+│   │   │   └── MainLayout.astro
+│   │   └── ui/
+│   │       ├── Button.astro
+│   │       └── Card.astro
+│   │
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── presentation.astro
+│   │   ├── actions.astro
+│   │   ├── actualites.astro
+│   │   └── contact.astro
+│   │
+│   ├── styles/
+│   │   ├── global.css
+│   │   └── variables.css
+│   │
+│   └── env.d.ts
+│
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
+
+
+Struture type d'une page 
+Page
+├── Hero (titre + accroche)
+├── Section contenu principal
+├── Section secondaire (missions, chiffres, valeurs, etc.)
+├── Appel à l’action (CTA)
+
+
+Intégration des Fichiers Markdown
+- Chaque page peut avoir un fichier Markdown associé pour le contenu textuel.
+- Exemple: src/pages/presentation.md pour la page de présentation.
+- Utilisation de bibliothèques comme `astro:markdown` pour intégrer le contenu Markdown dans les pages Astro.
+src/content/
+├── actualites/
+│   ├── 2024-01-lancement-gradd.md
+│   └── 2024-03-projet-communal.md
+└── actions/
+    ├── suivi-projet-educatif.md
+    └── etude-impact-environnemental.md
+
+Struture UI des Composants
+src/
+├─ components/
+│  ├─ ui/
+│  │  ├─ Button.astro
+│  │  ├─ Card.astro
+│  │  └─ Section.astro
+│  ├─ Header.astro
+│  └─ Footer.astro
+│
+├─ layouts/
+│  └─ BaseLayout.astro
+│
+├─ styles/
+│  ├─ variables.css
+│  ├─ base.css
+│  └─ components.css
+│
+└─ pages/
+   └─ index.astro
+
+Structure de la page de Présentation (homepage)
+1. Hero institutionnel (carrousel)
+2. Présentation stratégique de GRADD
+3. Domaines d’intervention
+4. Méthodologie d’intervention
+5. Vision & valeurs
+6. Appel à action institutionnel

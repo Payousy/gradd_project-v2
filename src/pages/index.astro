@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../components/layouts/BaseLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import About from "../components/home/About.astro";
+import Expertise from "../components/home/Expertise.astro";
+import Methodologie from "../components/home/Methodologie.astro";
+import Missions from "../components/home/Missions.astro";
+import Vision from "../components/home/Vision.astro";
+---
+
+<BaseLayout>
+  <!-- Hero image pleine largeur -->
+  <section class="home-hero">
+    <img
+      src="/images/ranerou.jpg"
+      alt="Engagement de GRADD pour le développement durable au Sénégal"
+      class="home-hero-image"
+    />
+    <div class="home-hero-overlay">
+      <h1>Pour des politiques publiques<br />ancrées dans les réalités locales</h1>
+      <p>
+        Cabinet d'études et de conseil en sciences sociales, GRADD accompagne
+        institutions, ONG et bailleurs dans l'évaluation et la planification
+        de leurs interventions au Sénégal.
+      </p>
+      <div class="hero-actions">
+        <a href="/domaines-competences" class="btn btn-primary">Nos compétences</a>
+        <a href="/contact" class="btn btn-outline--white btn">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <Hero />
+  <About />
+  <Expertise />
+  <Methodologie />
+  <Missions />
+  <Vision />
+
+  <!-- CTA final -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Construisons des interventions adaptées à vos enjeux</h2>
+      <p>Discutons de votre projet. Nous vous répondons rapidement.</p>
+      <a href="/contact" class="btn btn-primary" style="background-color: var(--color-gold); border-color: var(--color-gold); color: var(--color-navy)">
+        Nous contacter
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
