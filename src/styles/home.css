@@ -4,7 +4,7 @@
   top: 0;
   z-index: 1000;
   background-color: var(--color-navy);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .header-container {
@@ -39,7 +39,7 @@
 
 /* Trait doré signature sous le logo */
 .logo::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -52,7 +52,7 @@
   font-size: var(--text-xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* Nav desktop */
@@ -65,14 +65,16 @@
 }
 
 .nav-list a {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.02em;
   padding-bottom: 3px;
   border-bottom: 2px solid transparent;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .nav-list a:hover,
@@ -129,7 +131,9 @@
   align-items: center;
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
   pointer-events: none;
 }
 
@@ -146,7 +150,7 @@
   font-size: 1.75rem;
   background: none;
   border: none;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   transition: color var(--transition-fast);
   line-height: 1;
@@ -167,7 +171,9 @@
   margin: var(--space-4) 0;
   transform: translateY(16px);
   opacity: 0;
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 }
 
 .menu-overlay.active .overlay-nav-list li {
@@ -175,12 +181,24 @@
   opacity: 1;
 }
 
-.menu-overlay.active .overlay-nav-list li:nth-child(1) { transition-delay: 0.05s; }
-.menu-overlay.active .overlay-nav-list li:nth-child(2) { transition-delay: 0.1s; }
-.menu-overlay.active .overlay-nav-list li:nth-child(3) { transition-delay: 0.15s; }
-.menu-overlay.active .overlay-nav-list li:nth-child(4) { transition-delay: 0.2s; }
-.menu-overlay.active .overlay-nav-list li:nth-child(5) { transition-delay: 0.25s; }
-.menu-overlay.active .overlay-nav-list li:nth-child(6) { transition-delay: 0.3s; }
+.menu-overlay.active .overlay-nav-list li:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.menu-overlay.active .overlay-nav-list li:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.menu-overlay.active .overlay-nav-list li:nth-child(3) {
+  transition-delay: 0.15s;
+}
+.menu-overlay.active .overlay-nav-list li:nth-child(4) {
+  transition-delay: 0.2s;
+}
+.menu-overlay.active .overlay-nav-list li:nth-child(5) {
+  transition-delay: 0.25s;
+}
+.menu-overlay.active .overlay-nav-list li:nth-child(6) {
+  transition-delay: 0.3s;
+}
 
 .overlay-nav-list a {
   font-family: var(--font-display);
@@ -201,8 +219,12 @@
 }
 
 @media (max-width: 1024px) {
-  .nav-desktop { display: none; }
-  .menu-toggle { display: flex; }
+  .nav-desktop {
+    display: none;
+  }
+  .menu-toggle {
+    display: flex;
+  }
 }
 
 /* ── HERO HOME ── */
@@ -236,17 +258,17 @@
 }
 
 .home-hero-overlay h1 {
-  font-size: clamp(var(--text-2xl), 4.5vw, 3.5rem);
+  font-size: clamp(var(--text-2xl), 4.5vw, 1.2rem);
   color: var(--color-white);
-  max-width: 720px;
+  max-width: 500px;
   margin-bottom: var(--space-6);
   line-height: 1.15;
 }
 
 .home-hero-overlay p {
-  color: rgba(255,255,255,0.85);
-  font-size: clamp(var(--text-base), 1.5vw, var(--text-lg));
-  max-width: 580px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(var(--text-base), 1.3vw, var(--text-lg));
+  max-width: 400px;
   margin-bottom: var(--space-8);
 }
 
@@ -339,7 +361,9 @@
   border: 1px solid var(--color-border);
   border-top: 3px solid var(--color-gold);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
 }
 
 .expertise-card:hover {
@@ -414,14 +438,14 @@
 }
 
 .missions-section .section-lead {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .mission-card {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   padding: var(--space-6);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 3px solid var(--color-gold);
 }
 
@@ -434,7 +458,7 @@
 }
 
 .mission-card p {
-  color: rgba(255,255,255,0.65);
+  color: rgba(255, 255, 255, 0.65);
   font-size: var(--text-sm);
   margin: 0;
 }
@@ -462,7 +486,9 @@
 }
 
 @media (max-width: 768px) {
-  .vision-grid { grid-template-columns: 1fr; }
+  .vision-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── CTA SECTION ── */
@@ -478,7 +504,7 @@
 }
 
 .cta-section p {
-  color: rgba(255,255,255,0.72);
+  color: rgba(255, 255, 255, 0.72);
   font-size: var(--text-lg);
   max-width: 560px;
   margin: 0 auto var(--space-8);
@@ -486,8 +512,8 @@
 
 /* ── FOOTER ── */
 .site-footer {
-  background-color: #091E2D;
-  color: rgba(255,255,255,0.6);
+  background-color: #091e2d;
+  color: rgba(255, 255, 255, 0.6);
   padding: var(--space-12) 0 var(--space-8);
 }
 
@@ -497,7 +523,7 @@
   gap: var(--space-12);
   margin-bottom: var(--space-12);
   padding-bottom: var(--space-8);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-brand .logo {
@@ -509,7 +535,7 @@
 }
 
 .footer-brand p {
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   font-size: var(--text-sm);
   line-height: 1.6;
   margin: 0;
@@ -536,7 +562,7 @@
 }
 
 .footer-col a {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
   font-size: var(--text-sm);
   text-decoration: none;
   transition: color var(--transition-fast);
@@ -552,11 +578,11 @@
   justify-content: space-between;
   align-items: center;
   font-size: var(--text-xs);
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .footer-bottom a {
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
   text-decoration: none;
 }
 
@@ -578,7 +604,9 @@
   .fade-up {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
   }
 
   .fade-up.visible {
