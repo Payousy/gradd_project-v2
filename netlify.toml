@@ -1,0 +1,48 @@
+# Configuration Netlify pour Astro
+
+[build]
+command = "npm run build"
+publish = "dist"
+functions = "netlify/functions"
+
+[build.environment]
+NODE_VERSION = "20"
+
+# Règles de cache pour les assets statiques
+[[headers]]
+for = "/images/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/*.css"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/*.js"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+# Pages HTML — cache court (pour les updates rapides)
+[[headers]]
+for = "/*.html"
+[headers.values]
+Cache-Control = "public, max-age=3600, must-revalidate"
+
+# Redirects pour les routes Astro (optionnel)
+[[redirects]]
+from = "/contact"
+to = "/contact/"
+status = 301
+
+[[redirects]]
+from = "/actualites"
+to = "/actualites/"
+status = 301
+
+# Redirection du formulaire après soumission
+[[redirects]]
+from = "/merci"
+to = "/merci/"
+status = 200
