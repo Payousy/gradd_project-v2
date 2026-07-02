@@ -1,53 +1,65 @@
-# Configuration Netlify — Formulaire et webhook d'email
+# Configuration Netlify — Formulaire simple
 
-Guide rapide pour activer Netlify Forms, configurer le webhook vers la Netlify Function `sendFormEmail` et définir les variables d'environnement.
+Guide rapide pour déployer sur Netlify et activer la capture des formulaires.
 
-1. Déployer sur Netlify
+## 1. Déployer sur Netlify
 
-- Poussez votre branche et déployez le site sur Netlify (ou connectez le repo depuis Netlify).
+- Poussez votre code sur GitHub
+- Allez sur [netlify.com](https://netlify.com) et connectez-vous
+- Cliquez **"Add new site"** → **"Import an existing project"**
+- Sélectionnez GitHub et votre repo `gradd_project-v2`
+- Netlify détectera automatiquement la configuration Astro et commencera le build
 
-2. Activer Netlify Forms
+## 2. Activer Netlify Forms
 
-- Netlify détecte automatiquement les formulaires HTML qui ont `data-netlify="true"` et un champ `form-name`.
-- Vérifiez dans le tableau de bord : Site → Forms. Les soumissions apparaîtront ici.
+Netlify détecte automatiquement les formulaires HTML qui ont `data-netlify="true"` et un champ `form-name`.
 
-3. Configurer le webhook (pour envoi d'email)
+**Votre formulaire de contact a déjà cette configuration**, donc les messages apparaîtront immédiatement dans le dashboard Netlify.
 
-- URL du webhook à ajouter dans Netlify (Site → Forms → Settings → Notifications → Webhooks) :
+## 3. Consulter les messages
 
-  https://<votre-site>.netlify.app/.netlify/functions/sendFormEmail
+- Allez dans le dashboard Netlify
+- Cliquez sur votre site
+- Naviguez à **Site → Forms**
+- Les soumissions de votre formulaire de contact apparaîtront ici
+- Vous pouvez répondre directement aux messages reçus
 
-- Méthode : POST
-- Payload : choisissez l'option qui envoie `fields` (ou le payload complet). La function `sendFormEmail` gère plusieurs formats.
+## 4. Activer les notifications par email (optionnel)
 
-4. Définir les variables d'environnement (Netlify)
+Si vous voulez recevoir un email chaque fois qu'un formulaire est soumis :
 
-- Dans Netlify → Site settings → Build & deploy → Environment → Environment variables, ajoutez :
-  - `RESEND_API_KEY` = votre clé Resend
-  - `CONTACT_TO_EMAIL` = adresse qui recevra les messages (ex. contact@gradd.com)
-  - `CONTACT_FROM_EMAIL` = adresse d'envoi (ex. noreply@votredomaine.com)
+- Dans le dashboard Netlify → **Site → Forms → Settings → Notifications**
+- Cliquez **"Add notification"** → **"Email"**
+- Entrez votre adresse email
+- Netlify vous enverra automatiquement les soumissions par email
 
-Après avoir ajouté ces variables, redéployez le site.
+## 5. Ajouter le formulaire à d'autres pages
 
-5. Tester localement
+Si vous avez d'autres formulaires à ajouter, assurez-vous qu'ils ont :
 
-- Pour émuler les fonctions Netlify localement, installez le CLI Netlify et lancez :
-
+```html
+<form name="form-name" data-netlify="true" method="POST" action="/merci">
+  <!-- vos champs -->
+  <button type="submit">Envoyer</button>
+</form>
 ```
+
+**Important** : Chaque formulaire doit avoir un `name` unique (ex: `contact`, `newsletter`, etc.)
+
+## 6. Tester localement
+
+Pour émuler Netlify Forms localement :
+
+```bash
 npm install -g netlify-cli
 netlify dev
 ```
 
-- Le serveur local va émuler les fonctions et routes; vous pourrez soumettre le formulaire à `http://localhost:8888/contact`.
+Ouvrez `http://localhost:8888` et testez votre formulaire.
 
-6. Notes et dépannage
+## Résumé
 
-- Si la function retourne une erreur 500, vérifiez que `RESEND_API_KEY` est défini dans les variables Netlify.
-- La function attend diverses formes de payload (array `fields`, `submission`, `payload`), donc le webhook Netlify standard doit marcher.
-- Si vous préférez une intégration directe (SendGrid, Mailgun), on peut adapter la function.
-
-7. Récapitulatif rapide
-
-- Formulaire : `data-netlify="true"`, `input name="form-name" value="contact"` et `action="/merci"`.
-- Webhook : `https://<votre-site>.netlify.app/.netlify/functions/sendFormEmail` (POST)
-- Variables Netlify : `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
+✅ Formulaires capturés automatiquement sur Netlify  
+✅ Aucune clé API ou configuration supplémentaire  
+✅ Notifications email optionnelles  
+✅ Tout fonctionnera dès le déploiement
