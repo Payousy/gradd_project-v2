@@ -6,15 +6,63 @@ import Expertise from "../components/home/Expertise.astro";
 import Methodologie from "../components/home/Methodologie.astro";
 import Missions from "../components/home/Missions.astro";
 import Vision from "../components/home/Vision.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://gradd.sn/#website",
+      "url": "https://gradd.sn",
+      "name": "GRADD — Cabinet d'études et de conseil au Sénégal",
+      "description": "Cabinet sénégalais d'études et de conseil spécialisé en évaluation de politiques publiques, suivi-évaluation et développement durable.",
+      "inLanguage": "fr",
+      "publisher": { "@id": "https://gradd.sn/#organisation" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://gradd.sn/#organisation",
+      "name": "GRADD",
+      "legalName": "Groupe de Recherche Appliquée au Développement Durable",
+      "url": "https://gradd.sn",
+      "description": "Cabinet sénégalais d'études et de conseil en sciences sociales, spécialisé en évaluation de politiques publiques, suivi-évaluation et développement durable en Afrique de l'Ouest.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dakar",
+        "addressCountry": "SN"
+      },
+      "areaServed": "Afrique de l'Ouest",
+      "serviceType": [
+        "Évaluation de politiques publiques",
+        "Suivi-évaluation",
+        "Études sociologiques",
+        "Recherche appliquée",
+        "Développement durable"
+      ],
+      "knowsAbout": [
+        "Sciences sociales",
+        "Développement durable",
+        "Politiques publiques en Afrique de l'Ouest",
+        "Méthodes qualitatives et quantitatives",
+        "ODD"
+      ]
+    }
+  ]
+};
 ---
 
-<BaseLayout>
-  <!-- Hero image pleine largeur -->
+<BaseLayout
+  title="GRADD — Cabinet d'études en sciences sociales et développement durable | Dakar, Sénégal"
+  description="GRADD accompagne institutions, ONG et bailleurs dans l'évaluation de politiques publiques, le suivi-évaluation et la recherche appliquée au Sénégal et en Afrique de l'Ouest."
+  jsonLd={jsonLd}
+>
   <section class="home-hero">
     <img
       src="/images/ranerou_new.png"
       alt="Engagement de GRADD pour le développement durable au Sénégal"
       class="home-hero-image"
+      width="1920"
+      height="700"
     />
     <div class="home-hero-overlay">
       <h1>Pour des politiques publiques<br />ancrées dans les réalités locales</h1>
@@ -37,7 +85,6 @@ import Vision from "../components/home/Vision.astro";
   <Missions />
   <Vision />
 
-  <!-- CTA final -->
   <section class="cta-section">
     <div class="container">
       <h2>Construisons des interventions adaptées à vos enjeux</h2>
@@ -50,17 +97,13 @@ import Vision from "../components/home/Vision.astro";
 </BaseLayout>
 
 <script>
-  // Scroll reveal
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     },
     { threshold: 0.12 }
   );
-
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>

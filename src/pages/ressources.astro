@@ -1,0 +1,313 @@
+---
+import BaseLayout from "../components/layouts/BaseLayout.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Ressources & Partenaires institutionnels — GRADD",
+  "description": "Institutions internationales, centres de recherche et organisations partenaires de GRADD dans le domaine du développement en Afrique de l'Ouest.",
+  "url": "https://gradd.sn/ressources"
+};
+
+const institutionsOnusien = [
+  {
+    name: "PNUD Sénégal",
+    desc: "Programme des Nations Unies pour le Développement au Sénégal — gouvernance, ODD, réduction de la pauvreté.",
+    url: "https://www.undp.org/fr/senegal",
+    tag: "Système ONU"
+  },
+  {
+    name: "UNICEF Sénégal",
+    desc: "Fonds des Nations Unies pour l'enfance — protection de l'enfant, santé, éducation.",
+    url: "https://www.unicef.org/senegal/",
+    tag: "Système ONU"
+  },
+  {
+    name: "FAO Sénégal",
+    desc: "Organisation des Nations Unies pour l'alimentation — sécurité alimentaire, agriculture, développement rural.",
+    url: "https://www.fao.org/senegal/fr/",
+    tag: "Système ONU"
+  },
+  {
+    name: "ONU Femmes — Afrique de l'Ouest",
+    desc: "Entité des Nations Unies pour l'égalité des sexes et l'autonomisation des femmes.",
+    url: "https://africa.unwomen.org/fr/bureaux-regionaux/bureau-regional-de-lafrique-de-louest-et-du-centre",
+    tag: "Système ONU"
+  },
+  {
+    name: "UNFPA Sénégal",
+    desc: "Fonds des Nations Unies pour la population — santé reproductive, démographie.",
+    url: "https://senegal.unfpa.org/fr",
+    tag: "Système ONU"
+  },
+];
+
+const bailleursDev = [
+  {
+    name: "Banque africaine de développement (BAD)",
+    desc: "Première institution de financement du développement en Afrique — projets d'infrastructure, développement social et économique.",
+    url: "https://www.afdb.org/fr",
+    tag: "Bailleur"
+  },
+  {
+    name: "Banque mondiale — Sénégal",
+    desc: "Financement et expertise pour la réduction de la pauvreté et le développement durable au Sénégal.",
+    url: "https://www.banquemondiale.org/fr/country/senegal",
+    tag: "Bailleur"
+  },
+  {
+    name: "AFD — Agence Française de Développement",
+    desc: "Institution française de financement au développement — projets sociaux, environnementaux et économiques en Afrique.",
+    url: "https://www.afd.fr/fr/pays-regions/afrique",
+    tag: "Bailleur"
+  },
+  {
+    name: "USAID Sénégal",
+    desc: "Agence des États-Unis pour le développement international — agriculture, santé, gouvernance, éducation.",
+    url: "https://www.usaid.gov/fr/senegal",
+    tag: "Bailleur"
+  },
+  {
+    name: "Union européenne — Délégation au Sénégal",
+    desc: "Financement de programmes de développement et de coopération entre l'UE et le Sénégal.",
+    url: "https://www.eeas.europa.eu/delegations/senegal_fr",
+    tag: "Bailleur"
+  },
+  {
+    name: "FIDA — Fonds international de développement agricole",
+    desc: "Investissements dans le développement agricole et rural pour réduire la pauvreté en milieu rural.",
+    url: "https://www.ifad.org/fr/web/ifad/senegal",
+    tag: "Bailleur"
+  },
+];
+
+const recherche = [
+  {
+    name: "IPAR — Initiative Prospective Agricole et Rurale",
+    desc: "Think tank sénégalais sur les politiques agricoles et rurales en Afrique de l'Ouest. Ancré à Dakar.",
+    url: "https://ipar.sn/",
+    tag: "Think tank"
+  },
+  {
+    name: "CREPOS — Centre de Recherches sur les Politiques Sociales",
+    desc: "Centre de recherche de l'UCAD dédié aux politiques sociales, à la gouvernance et aux transformations de l'État sénégalais.",
+    url: "https://crepos.edu.sn/",
+    tag: "Recherche"
+  },
+  {
+    name: "CRDI — Centre de recherches pour le développement international",
+    desc: "Organisme canadien de financement de la recherche pour le développement — présent au Sénégal depuis plusieurs décennies.",
+    url: "https://idrc-crdi.ca/fr/ce-que-nous-faisons/afrique-subsaharienne/senegal",
+    tag: "Recherche"
+  },
+  {
+    name: "IRD — Institut de Recherche pour le Développement",
+    desc: "Institut français de recherche scientifique pour le développement, actif au Sénégal dans de nombreuses disciplines.",
+    url: "https://www.ird.fr/nos-implantations-geographiques/senegal",
+    tag: "Recherche"
+  },
+  {
+    name: "UCAD — Université Cheikh Anta Diop de Dakar",
+    desc: "Principale université sénégalaise — partenaire académique clé pour la recherche en sciences sociales et le développement.",
+    url: "https://www.ucad.sn/",
+    tag: "Académique"
+  },
+];
+
+const institutionsAfricaines = [
+  {
+    name: "CEDEAO — Communauté Économique des États de l'Afrique de l'Ouest",
+    desc: "Organisation régionale de coopération économique et politique en Afrique de l'Ouest.",
+    url: "https://www.ecowas.int/",
+    tag: "Régional"
+  },
+  {
+    name: "Union africaine",
+    desc: "Institution panafricaine engagée sur l'Agenda 2063 pour une Afrique intégrée, prospère et en paix.",
+    url: "https://au.int/fr",
+    tag: "Régional"
+  },
+  {
+    name: "Gouvernement du Sénégal — Portail officiel",
+    desc: "Portail officiel de l'État sénégalais — textes législatifs, politiques publiques, institutions gouvernementales.",
+    url: "https://www.gouv.sn/",
+    tag: "Institutionnel"
+  },
+  {
+    name: "ANSD — Agence nationale de la Statistique et de la Démographie",
+    desc: "Organisme de référence pour les données statistiques nationales — enquêtes sociales, économiques et démographiques.",
+    url: "https://www.ansd.sn/",
+    tag: "Données"
+  },
+  {
+    name: "DPEE — Direction de la Prévision et des Études Économiques",
+    desc: "Service officiel de veille et d'analyse économique du Ministère des Finances du Sénégal.",
+    url: "https://www.dpee.sn/",
+    tag: "Données"
+  },
+];
+
+const categories = [
+  { id: "onu", label: "Système ONU", items: institutionsOnusien },
+  { id: "bailleurs", label: "Bailleurs & institutions financières", items: bailleursDev },
+  { id: "recherche", label: "Recherche & académique", items: recherche },
+  { id: "africaines", label: "Institutions africaines & données", items: institutionsAfricaines },
+];
+---
+
+<BaseLayout
+  title="Ressources & Partenaires institutionnels — GRADD"
+  description="Découvrez les institutions partenaires et les ressources clés dans le domaine du développement, des politiques publiques et de la recherche en sciences sociales en Afrique de l'Ouest."
+  jsonLd={jsonLd}
+>
+  <div class="page-intro">
+    <div class="container">
+      <span class="section-eyebrow">Liens utiles</span>
+      <h1>Ressources & Partenaires institutionnels</h1>
+      <div class="gold-divider"></div>
+      <p class="section-lead">
+        GRADD évolue dans un écosystème d'institutions, de centres de recherche
+        et d'organisations engagées pour le développement durable en Afrique de l'Ouest.
+        Retrouvez ici les liens vers les principales références de notre secteur.
+      </p>
+    </div>
+  </div>
+
+  {categories.map(cat => (
+    <section class="section section--white" id={cat.id}>
+      <div class="container">
+        <div class="section-intro">
+          <span class="section-eyebrow">{cat.label}</span>
+          <div class="gold-divider"></div>
+        </div>
+
+        <div class="grid-auto">
+          {cat.items.map(item => (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resource-card"
+            >
+              <div class="resource-card-inner">
+                <span class="resource-tag">{item.tag}</span>
+                <h3>{item.name}</h3>
+                <p>{item.desc}</p>
+                <span class="resource-link-label">Visiter le site →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section section--bg">
+    <div class="container">
+      <div class="section-intro section-intro--center">
+        <span class="section-eyebrow">Référentiels internationaux</span>
+        <h2 class="section-title">Cadres de référence que nous mobilisons</h2>
+        <div class="gold-divider gold-divider--center"></div>
+      </div>
+
+      <div class="grid-3">
+        {[
+          {
+            t: "Agenda 2030 — ODD",
+            d: "Les 17 Objectifs de Développement Durable qui structurent les politiques publiques mondiales et guident les évaluations de nos partenaires.",
+            url: "https://sdgs.un.org/fr/goals"
+          },
+          {
+            t: "Agenda 2063 — Union africaine",
+            d: "Le cadre stratégique continental pour une Afrique intégrée, prospère et en paix — référence centrale pour les politiques africaines.",
+            url: "https://au.int/fr/agenda2063/overview"
+          },
+          {
+            t: "Plan Sénégal Émergent (PSE)",
+            d: "Le référentiel de politique économique et sociale du Sénégal qui oriente les investissements publics et les programmes de développement.",
+            url: "https://www.sec.gouv.sn/"
+          },
+        ].map(ref => (
+          <a href={ref.url} target="_blank" rel="noopener noreferrer" class="card card--gold-bar reference-card">
+            <h3 style="font-size: var(--text-base); font-family: var(--font-base); font-weight: 700;">{ref.t}</h3>
+            <p style="font-size: var(--text-sm); margin: 0;">{ref.d}</p>
+            <span class="resource-link-label" style="display: block; margin-top: var(--space-4);">En savoir plus →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Vous souhaitez collaborer avec nous ?</h2>
+      <p>GRADD est ouvert aux partenariats avec des institutions, des ONG et des bailleurs partageant nos valeurs.</p>
+      <a href="/contact" class="btn btn-primary" style="background-color: var(--color-gold); border-color: var(--color-gold); color: var(--color-navy)">
+        Nous contacter
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.resource-card {
+  display: block;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-gold);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  background: var(--color-white);
+}
+
+.resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(13, 43, 62, 0.1);
+  text-decoration: none;
+}
+
+.resource-card-inner {
+  padding: var(--space-6);
+}
+
+.resource-tag {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-3);
+}
+
+.resource-card h3 {
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.resource-card p {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  margin-bottom: var(--space-4);
+  line-height: 1.6;
+}
+
+.resource-link-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-blue-mid);
+}
+
+.reference-card {
+  text-decoration: none;
+  display: block;
+}
+
+.reference-card:hover {
+  text-decoration: none;
+}
+</style>
