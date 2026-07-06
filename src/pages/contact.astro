@@ -3,8 +3,8 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Contact — GRADD"
-  description="Contactez GRADD pour vos projets de recherche appliquée, suivi-évaluation et développement durable."
+  title="Nous contacter — GRADD"
+  description="Contactez GRADD pour vos projets d'études, de suivi-évaluation ou de conseil en développement durable au Sénégal."
 >
   <div class="page-intro">
     <div class="container">
@@ -13,7 +13,7 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
       <div class="gold-divider"></div>
       <p class="section-lead">
         Vous avez un projet ou une question ? Remplissez le formulaire
-        ci-dessous et nous vous répondrons rapidement.
+        ci-dessous et nous vous répondons dans les meilleurs délais.
       </p>
     </div>
   </div>
@@ -21,47 +21,92 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
   <section class="section section--white">
     <div class="container">
       <div class="contact-grid">
-        <!-- Formulaire -->
+
+        <!-- Formulaire — géré entièrement par Netlify Forms -->
         <div class="contact-form-wrapper">
           <form
             name="contact"
             method="POST"
-            class="contact-form"
             data-netlify="true"
+            data-netlify-honeypot="bot-field"
             action="/merci"
           >
+            <!-- Champs requis par Netlify Forms -->
             <input type="hidden" name="form-name" value="contact" />
+
+            <!-- Honeypot anti-spam (géré nativement par Netlify) -->
+            <p style="display:none" aria-hidden="true">
+              <label>Ne pas remplir : <input name="bot-field" /></label>
+            </p>
 
             <div class="form-group">
               <label for="name">Nom complet *</label>
-              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Votre nom" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                minlength="2"
+                maxlength="100"
+                autocomplete="name"
+                placeholder="Votre nom"
+              />
             </div>
 
             <div class="form-group">
               <label for="email">Email *</label>
-              <input type="email" id="email" name="email" required autocomplete="email" placeholder="votre@email.com" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="votre@email.com"
+              />
             </div>
 
             <div class="form-group">
               <label for="organisation">Organisation</label>
-              <input type="text" id="organisation" name="organisation" placeholder="Votre structure" />
+              <input
+                type="text"
+                id="organisation"
+                name="organisation"
+                maxlength="150"
+                placeholder="Votre structure (facultatif)"
+              />
             </div>
 
             <div class="form-group">
               <label for="subject">Sujet</label>
-              <input type="text" id="subject" name="subject" placeholder="Objet de votre demande" />
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                maxlength="200"
+                placeholder="Objet de votre demande"
+              />
             </div>
 
             <div class="form-group">
               <label for="message">Message *</label>
-              <textarea id="message" name="message" required rows="6" placeholder="Décrivez votre projet ou votre question..."></textarea>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="6"
+                minlength="10"
+                maxlength="5000"
+                placeholder="Décrivez votre projet ou votre question..."
+              ></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Envoyer le message</button>
+            <button type="submit" class="btn btn-primary">
+              Envoyer le message
+            </button>
           </form>
         </div>
 
-        <!-- Infos -->
+        <!-- Informations de contact -->
         <div class="contact-info">
           <div class="info-block">
             <h3>Email</h3>
@@ -83,6 +128,7 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
             <p>Sénégal et Afrique de l'Ouest</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -106,7 +152,7 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
   border-radius: var(--radius-md);
 }
 
-.contact-form {
+.contact-form-wrapper form {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
@@ -143,6 +189,11 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
   box-shadow: 0 0 0 3px rgba(13, 43, 62, 0.08);
 }
 
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -150,12 +201,11 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
 }
 
 .info-block {
-  padding: var(--space-6);
-  border-left: 3px solid var(--color-gold);
+  padding: var(--space-5) var(--space-6);
   background: var(--color-white);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
 .info-block h3 {
@@ -172,6 +222,7 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
   margin: 0;
   font-size: var(--text-sm);
   color: var(--color-muted);
+  line-height: 1.6;
 }
 
 .info-block a {

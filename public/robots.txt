@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /merci
+
+Sitemap: https://gradd.sn/sitemap.xml

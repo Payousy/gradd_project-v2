@@ -1,47 +1,73 @@
 # Configuration Netlify pour Astro
 
 [build]
-command = "npm run build"
-publish = "dist"
+  command = "npm run build"
+  publish = "dist"
 
 [build.environment]
-NODE_VERSION = "22"
+  NODE_VERSION = "22"
 
 # Règles de cache pour les assets statiques
 [[headers]]
-for = "/images/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/*.css"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/*.js"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 # Pages HTML — cache court (pour les updates rapides)
 [[headers]]
-for = "/*.html"
-[headers.values]
-Cache-Control = "public, max-age=3600, must-revalidate"
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
 
-# Redirects pour les routes Astro (optionnel)
+# Redirects pour les routes Astro
 [[redirects]]
-from = "/contact"
-to = "/contact/"
-status = 301
+  from = "/contact"
+  to = "/contact/"
+  status = 301
 
 [[redirects]]
-from = "/actualites"
-to = "/actualites/"
-status = 301
+  from = "/actualites"
+  to = "/actualites/"
+  status = 301
 
 # Redirection du formulaire après soumission
 [[redirects]]
-from = "/merci"
-to = "/merci/"
-status = 200
+  from = "/merci"
+  to = "/merci/"
+  status = 200
+
+# Redirection page 404
+[[redirects]]
+  from = "/*"
+  to = "/404"
+  status = 404
+
+# Redirection ancienne URL partenaires
+[[redirects]]
+  from = "/partenaires"
+  to = "/ressources"
+  status = 301
+
+# En-têtes sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
