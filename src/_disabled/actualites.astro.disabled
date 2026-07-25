@@ -15,7 +15,7 @@ const actualites = (await getCollection("actualites"))
       <li>
         <h2>{actu.data.title}</h2>
         <p>{actu.data.excerpt}</p>
-        <a href={`/actualites/${actu.slug}`}>Lire la suite</a>
+        <a href={`/actualites/${actu.id}`}>Lire la suite</a>
       </li>
     ))}
   </ul>

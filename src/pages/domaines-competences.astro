@@ -1,155 +1,144 @@
 ---
 import BaseLayout from "../components/layouts/BaseLayout.astro";
+
+const competences = [
+  {
+    title: "Études sociologiques & diagnostics territoriaux",
+    desc: "Réalisation d'enquêtes qualitatives et quantitatives fondées sur une analyse fine des dynamiques sociales, culturelles et institutionnelles propres aux territoires d'intervention.",
+  },
+  {
+    title: "Suivi-évaluation de projets et politiques publiques",
+    desc: "Conception et mise en œuvre de dispositifs de suivi-évaluation permettant de mesurer les résultats, les effets et l'impact des projets, tout au long de leur cycle de vie.",
+  },
+  {
+    title: "Études d'impact environnemental et social",
+    desc: "Analyse des impacts sociaux et environnementaux des projets et programmes afin d'éclairer la prise de décision et de favoriser des interventions durables et responsables.",
+  },
+  {
+    title: "Recherche-action & innovation sociale",
+    desc: "Production de connaissances appliquées et accompagnement au changement à travers des démarches de recherche-action associant étroitement les acteurs concernés.",
+  },
+  {
+    title: "Planification stratégique territoriale",
+    desc: "Appui à la définition de stratégies territoriales intégrant les enjeux sociaux, économiques et environnementaux, en lien avec les politiques publiques nationales et locales.",
+  },
+  {
+    title: "Appui-conseil aux politiques publiques",
+    desc: "Analyse, accompagnement et évaluation des politiques publiques sectorielles afin d'en renforcer la pertinence, la cohérence et l'impact au regard des réalités locales.",
+  },
+];
+
+const secteurs = [
+  "Santé",
+  "Éducation",
+  "Environnement",
+  "Pêche",
+  "Agriculture",
+  "Action sociale",
+];
+
+const valeurAjoutee = [
+  "Une expérience de terrain individuelle couvrant six secteurs du développement",
+  "Articulation entre recherche scientifique et action opérationnelle",
+  "Démarches participatives favorisant l'appropriation des projets",
+  "Indépendance de l'analyse et exigence méthodologique",
+];
 ---
 
-<BaseLayout title="Domaines de compétences – GRADD">
-  <main>
-
-    <!-- Intro -->
-    <section class="page-intro">
+<BaseLayout
+  title="Domaines de compétences — GRADD"
+  description="Découvrez les domaines d'expertise du GRADD : études sociologiques, suivi-évaluation, études d'impact, recherche-action et planification territoriale."
+>
+  <div class="page-intro">
+    <div class="container">
+      <span class="section-eyebrow">Notre expertise</span>
       <h1>Nos domaines de compétences</h1>
-      <p>
+      <div class="gold-divider"></div>
+      <p class="section-lead">
         Le GRADD intervient auprès des acteurs publics, des collectivités territoriales,
         des organisations de la société civile et des partenaires au développement,
         à travers une expertise sociologique appliquée et contextualisée.
       </p>
-    </section>
+    </div>
+  </div>
 
-    <!-- Domaines -->
-    <section class="competences">
-      <h2>Des champs d’intervention complémentaires</h2>
-
-      <div class="competences-grid">
-        <article class="competence-card">
-          <h3>Politiques publiques</h3>
-          <p>
-  Analyse, accompagnement et évaluation des politiques publiques sectorielles
-  afin d’en renforcer la pertinence, la cohérence et l’impact au regard des
-  réalités sociales et territoriales.
-</p>
-
-        </article>
-
-        <article class="competence-card">
-          <h3>Suivi-évaluation de projets</h3>
-          <p>
-  Conception et mise en œuvre de dispositifs de suivi-évaluation permettant de
-  mesurer les résultats, les effets et l’impact des projets de développement,
-  tout au long de leur cycle de vie.
-</p>
-
-        </article>
-
-        <article class="competence-card">
-          <h3>Études sociologiques</h3>
-          <p>
-  Réalisation d’enquêtes qualitatives et quantitatives fondées sur une analyse
-  fine des dynamiques sociales, culturelles et institutionnelles propres aux
-  territoires d’intervention.
-</p>
-
-        </article>
-
-        <article class="competence-card">
-          <h3>Recherche-action & innovation sociale</h3>
-          <p>
-  Production de connaissances appliquées et accompagnement au changement à
-  travers des démarches de recherche-action associant étroitement les acteurs
-  concernés.
-</p>
-
-        </article>
-
-        <article class="competence-card">
-          <h3>Planification stratégique territoriale</h3>
-          <p>
-  Appui à la définition de stratégies territoriales intégrant les enjeux sociaux,
-  économiques et environnementaux, en lien avec les politiques publiques
-  nationales et locales.
-</p>
-
-        </article>
-
-        <article class="competence-card">
-          <h3>Études d’impact social et environnemental</h3>
-          <p>
-  Analyse des impacts sociaux et environnementaux des projets et programmes afin
-  d’éclairer la prise de décision et de favoriser des interventions durables et
-  responsables.
-</p>
-
-        </article>
+  <section class="section section--white">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-eyebrow">Nos compétences</span>
+        <h2 class="section-title">Des expertises complémentaires</h2>
+        <div class="gold-divider"></div>
       </div>
-    </section>
 
-    <!-- Lien méthodologie -->
-    <section class="methodo-bridge">
-      <h2>Une méthodologie au cœur de chaque intervention</h2>
-      <p>
-        L’ensemble de nos domaines de compétences repose sur une méthodologie rigoureuse,
-        issue des sciences sociales et adaptée aux contextes locaux.
-      </p>
-      <a href="/methodologie" class="text-link">
-        Découvrir notre méthodologie d’intervention
-      </a>
-    </section>
+      <div class="grid-auto">
+        {competences.map(c => (
+          <div class="card card--gold-bar">
+            <h3 style="font-family: var(--font-display); color: var(--color-navy); margin-bottom: var(--space-3);">{c.title}</h3>
+            <p style="margin: 0;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-    <!-- Valeur ajoutée -->
-    <section class="value-proposition">
-      <h2>Notre valeur ajoutée</h2>
-      <ul>
-  <li>Compréhension approfondie des contextes sociaux et territoriaux</li>
-  <li>Articulation entre recherche scientifique et action opérationnelle</li>
-  <li>Démarches participatives favorisant l’appropriation des projets</li>
-  <li>Indépendance de l’analyse et exigence méthodologique</li>
-</ul>
+  <section class="section section--bg">
+    <div class="container">
+      <div class="section-intro section-intro--center">
+        <span class="section-eyebrow">Nos secteurs d'intervention</span>
+        <h2 class="section-title">Une expérience de terrain plurisectorielle</h2>
+        <div class="gold-divider gold-divider--center"></div>
+        <p class="section-lead">
+          Avant de fonder GRADD, nos sociologues ont acquis, chacun de leur côté,
+          une expérience de terrain dans les secteurs suivants :
+        </p>
+      </div>
 
-    </section>
-<section class="methodology-applied">
-  <h2>Une méthodologie transversale appliquée à chaque domaine</h2>
+      <div class="grid-auto">
+        {secteurs.map(s => (
+          <div class="card card--gold-bar" style="text-align: center;">
+            <h3 style="font-family: var(--font-display); color: var(--color-navy); margin: 0;">{s}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <p>
-    Quel que soit le champ d’intervention, les missions du GRADD reposent
-    sur une méthodologie structurée issue des sciences sociales, garantissant
-    la cohérence des analyses et l’opérationnalité des recommandations.
-  </p>
+  <section class="section section--white">
+    <div class="container">
+      <div class="grid-2" style="gap: var(--space-12); align-items: center;">
+        <div>
+          <span class="section-eyebrow">Notre valeur ajoutée</span>
+          <h2 class="section-title">Une expertise au service de l'action</h2>
+          <div class="gold-divider"></div>
+          <ul style="display: grid; gap: var(--space-3); list-style: none; padding: 0; margin: 0;">
+            {valeurAjoutee.map(v => (
+              <li style="padding-left: var(--space-6); position: relative;">
+                <span style="position: absolute; left: 0; color: var(--color-gold); font-weight: 700;">→</span>
+                {v}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p>
+            L'ensemble de nos domaines de compétences repose sur une méthodologie
+            rigoureuse, issue des sciences sociales et adaptée aux contextes locaux.
+          </p>
+          <a href="/methodologie" class="btn btn-outline">
+            Découvrir notre méthodologie d'intervention
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <ul class="methodology-summary">
-    <li>
-      <strong>Diagnostic et cadrage</strong>  
-      Analyse des contextes sociaux, institutionnels et territoriaux propres
-      à chaque domaine d’intervention.
-    </li>
-    <li>
-      <strong>Collecte et production des données</strong>  
-      Mobilisation d’outils qualitatifs et quantitatifs adaptés aux enjeux
-      sectoriels.
-    </li>
-    <li>
-      <strong>Analyse et co-construction</strong>  
-      Interprétation des résultats et échanges avec les acteurs concernés.
-    </li>
-    <li>
-      <strong>Recommandations et accompagnement</strong>  
-      Formulation de propositions opérationnelles spécifiques à chaque champ
-      d’intervention.
-    </li>
-  </ul>
-
-  <p class="methodology-link">
-    <a href="/methodologie">
-      En savoir plus sur notre méthodologie →
-    </a>
-  </p>
-</section>
-
-    <!-- CTA -->
-    <section class="cta">
+  <section class="cta-section">
+    <div class="container">
       <h2>Construisons des interventions adaptées à vos enjeux</h2>
-      <a href="/contact" class="btn btn-primary">Nous contacter</a>
-    </section>
-
-    <!-- CTA -->
-
-  </main>
+      <p>Chaque mission est construite sur mesure. Contactez-nous pour échanger.</p>
+      <a href="/contact" class="btn btn-primary" style="background-color: var(--color-gold); border-color: var(--color-gold); color: var(--color-navy)">
+        Nous contacter
+      </a>
+    </div>
+  </section>
 </BaseLayout>

@@ -1,76 +1,47 @@
-# Astro Starter Kit: Minimal
+# Site GRADD
 
-```sh
-npm create astro@latest -- --template minimal
+Site vitrine du GRADD (Groupe de Recherche Appliquée au Développement Durable), construit avec [Astro](https://astro.build).
+
+## Structure du projet
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
 ├── public/
+│   ├── images/              # Images utilisées par les pages
+│   ├── favicon.svg
+│   └── robots.txt
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/
+│   │   ├── Header.astro     # En-tête + navigation (utilisé par BaseLayout)
+│   │   ├── Footer.astro     # Pied de page (utilisé par BaseLayout)
+│   │   ├── layouts/
+│   │   │   └── BaseLayout.astro
+│   │   └── home/            # Sections spécifiques à la page d'accueil
+│   ├── content/
+│   │   ├── actualites/       # Articles (collection "actualites")
+│   │   └── actions/          # Fiches actions (collection "actions")
+│   ├── pages/                 # Une route par fichier
+│   ├── styles/                # CSS partagé
+│   └── content.config.ts      # Schémas des collections de contenu
+├── astro.config.mjs
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Commandes
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Commande          | Action                                      |
+| :---------------- | :------------------------------------------ |
+| `npm install`     | Installe les dépendances                    |
+| `npm run dev`     | Démarre le serveur local (`localhost:4321`) |
+| `npm run build`   | Build de production dans `./dist/`          |
+| `npm run preview` | Prévisualise le build de production         |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Documentation complémentaire
 
-## 🧞 Commands
+- [`NETLIFY_INSTRUCTIONS.md`](./NETLIFY_INSTRUCTIONS.md) — configuration du formulaire de contact et du déploiement Netlify
+- [`SECURITE.md`](./SECURITE.md) — en-têtes de sécurité mis en place
+- [`SEO-GUIDE.md`](./SEO-GUIDE.md) — métadonnées, sitemap, bonnes pratiques SEO
 
-All commands are run from the root of the project, from a terminal:
+## À faire / points de vigilance
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-Struture Globale du site
-gradd-site/
-├── public/
-│ └── images/
-│ └── logo.svg
-│
-├── src/
-│ ├── components/
-│ │ ├── layout/
-│ │ │ ├── Header.astro
-│ │ │ ├── Footer.astro
-│ │ │ └── MainLayout.astro
-│ │ └── ui/
-│ │ ├── Button.astro
-│ │ └── Card.astro
-│ │
-│ ├── pages/
-│ │ ├── index.astro
-│ │ ├── presentation.astro
-│ │ ├── actions.astro
-│ │ ├── actualites.astro
-│ │ └── contact.astro
-│ │
-│ ├── styles/
-│ │ ├── global.css
-│ │ └── variables.css
-│ │
-│ └── env.d.ts
-│
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+- La collection de contenu `actions` (`src/content/actions/`) contient des fiches encore à finaliser (titres et texte non définitifs) et n'est pas encore affichée dynamiquement sur `pages/actions.astro`, qui reste une page statique.

@@ -1,5 +1,9 @@
 ---
 import BaseLayout from "../components/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const equipe = (await getCollection("team", ({ data }) => data.published))
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
@@ -24,27 +28,28 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
       <div class="grid-2" style="gap: var(--space-16); align-items: start;">
         <div>
           <span class="section-eyebrow">Notre genèse</span>
-          <h2 class="section-title">Une réponse à un constat de terrain</h2>
+          <h2 class="section-title">Une aventure collective, née de parcours individuels</h2>
           <div class="gold-divider"></div>
           <p>
-            La création de GRADD fait suite à plusieurs années d'expériences
-            professionnelles menées par ses fondateurs dans le domaine du
-            suivi-évaluation de politiques et de programmes de développement,
-            ainsi que dans la conduite de recherches pour le compte d'organisations
-            non gouvernementales et d'acteurs institutionnels.
+            GRADD est né d'un groupe d'amis sociologues qui, après l'obtention
+            de leur Master, ont chacun construit leur propre parcours au sein
+            de projets de développement — en mise en œuvre comme en
+            suivi-évaluation — dans des secteurs aussi variés que la santé,
+            l'éducation, l'environnement, la pêche, l'agriculture ou l'action
+            sociale.
           </p>
           <p>
-            Ces expériences de terrain ont mis en lumière un constat partagé :
-            bien que de nombreux projets soient initiés avec des objectifs
-            pertinents, les outils d'analyse et les approches méthodologiques
-            mobilisés demeurent souvent peu adaptés aux contextes socioculturels
-            locaux.
+            Certains d'entre eux se sont déjà retrouvés, à 5 ou 6, sur des
+            missions communes. Mais c'est en confrontant l'ensemble de ces
+            expériences individuelles qu'est née une conviction partagée :
+            réunir cette diversité de parcours au sein d'une même structure
+            permettrait de proposer une expertise plus riche et mieux
+            articulée aux institutions et partenaires du développement.
           </p>
           <p>
-            C'est face à ce constat que GRADD a été conçu comme un outil d'appui
-            stratégique et opérationnel, fondé sur des méthodes de recherche
-            appliquée rigoureuses, contextualisées et ancrées dans les réalités
-            locales.
+            GRADD est ainsi une jeune structure de conseil — mais portée par
+            dix sociologues qui, individuellement, ont déjà l'expérience du
+            terrain sénégalais et de ses réalités.
           </p>
         </div>
         <div>
@@ -76,6 +81,32 @@ import BaseLayout from "../components/layouts/BaseLayout.astro";
           <div class="card card--gold-bar">
             <h3 style="font-size: var(--text-base); font-family: var(--font-base); font-weight: 700;">{item.v}</h3>
             <p style="font-size: var(--text-sm); margin: 0;">{item.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <div class="section-intro section-intro--center">
+        <span class="section-eyebrow">L'équipe</span>
+        <h2 class="section-title">Dix sociologues associés</h2>
+        <div class="gold-divider gold-divider--center"></div>
+        <p class="section-lead">
+          Une équipe pluridisciplinaire, réunissant des expériences de terrain
+          complémentaires au service de vos projets.
+        </p>
+      </div>
+
+      <div class="grid-auto">
+        {equipe.map(membre => (
+          <div class="card card--gold-bar" style="text-align: center;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-navy); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: var(--text-lg); margin: 0 auto var(--space-4);">
+              {membre.data.name.charAt(0)}
+            </div>
+            <h3 style="font-family: var(--font-display); color: var(--color-navy); margin-bottom: var(--space-1);">{membre.data.name}</h3>
+            <p style="font-size: var(--text-sm); color: var(--color-muted); margin-bottom: var(--space-2);">{membre.data.role}</p>
           </div>
         ))}
       </div>

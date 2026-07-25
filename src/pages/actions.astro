@@ -1,84 +1,64 @@
 ---
 import BaseLayout from "../components/layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+const fiches = await Promise.all(
+  (await getCollection("actions", ({ data }) => data.published))
+    .map(async entry => ({ entry, rendered: await render(entry) }))
+);
 ---
 
-<BaseLayout title="Dispositifs d’intervention, suivi et évaluation – GRADD">
-  <main>
-
-    <!-- Intro -->
-    <section class="page-intro">
-      <h1>Dispositifs d’intervention, suivi et évaluation</h1>
-      <p>
-        Le GRADD accompagne les acteurs publics et les partenaires au développement
-        à toutes les étapes du cycle de projet, depuis la conception des dispositifs
-        d’intervention jusqu’à l’évaluation et la capitalisation des actions menées.
+<BaseLayout
+  title="Nos actions — GRADD"
+  description="Exemples de dispositifs d'intervention, de suivi et d'évaluation menés par le GRADD auprès des acteurs publics et des partenaires au développement."
+>
+  <div class="page-intro">
+    <div class="container">
+      <span class="section-eyebrow">Nos actions</span>
+      <h1>Des dispositifs concrets, au service de vos projets</h1>
+      <div class="gold-divider"></div>
+      <p class="section-lead">
+        Chaque mission du GRADD s'appuie sur la méthodologie présentée sur
+        <a href="/methodologie">notre page méthodologie</a>. Voici quelques
+        exemples de dispositifs que nous sommes en mesure de mettre en œuvre.
       </p>
-    </section>
+    </div>
+  </div>
 
-    <!-- A — Conception des dispositifs -->
-    <section class="dispositif-section">
-      <h2>Conception des dispositifs d’intervention</h2>
-      <p>
-        Le GRADD intervient en amont des projets afin de concevoir des dispositifs
-        d’intervention adaptés aux contextes sociaux, institutionnels et territoriaux.
-      </p>
-      <ul>
-        <li>Diagnostics sociologiques et territoriaux</li>
-        <li>Analyse des parties prenantes et des dynamiques locales</li>
-        <li>Élaboration de cadres logiques et théories du changement</li>
-        <li>Définition d’indicateurs pertinents et contextualisés</li>
-        <li>Intégration de démarches participatives</li>
-      </ul>
-    </section>
+  <section class="section section--white">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-eyebrow">Exemples de dispositifs</span>
+        <h2 class="section-title">Types de missions menées par le GRADD</h2>
+        <div class="gold-divider"></div>
+      </div>
 
-    <!-- B — Suivi -->
-    <section class="dispositif-section alt">
-      <h2>Suivi des projets et des politiques publiques</h2>
-      <p>
-        Le suivi permet d’assurer le pilotage opérationnel des interventions et
-        d’ajuster les actions en fonction des réalités du terrain.
-      </p>
-      <ul>
-        <li>Mise en place de dispositifs de suivi opérationnel</li>
-        <li>Collecte régulière des données de suivi</li>
-        <li>Analyse des résultats intermédiaires</li>
-        <li>Appui à la prise de décision et aux ajustements stratégiques</li>
-      </ul>
-    </section>
+      <div class="grid-auto">
+        {fiches.map(({ entry, rendered: { Content } }) => (
+          <article class="card card--gold-bar">
+            <span style="display: inline-block; font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold); background: var(--color-gold-light); padding: 2px 8px; border-radius: 2px; margin-bottom: var(--space-3);">
+              {entry.data.type}
+            </span>
+            <h3 style="font-family: var(--font-display); color: var(--color-navy); margin-bottom: var(--space-1);">{entry.data.title}</h3>
+            {entry.data.territoire && (
+              <p style="font-size: var(--text-xs); color: var(--color-muted); margin-bottom: var(--space-4);">📍 {entry.data.territoire}</p>
+            )}
+            <div style="font-size: var(--text-sm);">
+              <Content />
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
-    <!-- C — Évaluation -->
-    <section class="dispositif-section">
-      <h2>Évaluation et apprentissages</h2>
-      <p>
-        Le GRADD conduit des évaluations rigoureuses visant à mesurer les effets,
-        les résultats et l’impact des projets et des politiques publiques.
-      </p>
-      <ul>
-        <li>Évaluations intermédiaires et finales</li>
-        <li>Analyses d’impact social et institutionnel</li>
-        <li>Capitalisation des enseignements</li>
-        <li>Formulation de recommandations opérationnelles</li>
-      </ul>
-    </section>
-
-    <!-- D — Valeur ajoutée -->
-    <section class="dispositif-section alt">
-      <h2>Une approche intégrée et sociologique</h2>
-      <p>
-        À chaque étape, le GRADD mobilise une approche fondée sur les sciences sociales,
-        garantissant la cohérence des dispositifs, la fiabilité des analyses et
-        l’appropriation des actions par les acteurs concernés.
-      </p>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
+  <section class="cta-section">
+    <div class="container">
       <h2>Construire des dispositifs efficaces et durables</h2>
-      <p>
-        Vous souhaitez concevoir, suivre ou évaluer un projet ou une politique publique ?
-      </p>
-      <a href="/contact" class="btn-primary">Nous contacter</a>
-    </section>
-
-  </main>
+      <p>Vous souhaitez concevoir, suivre ou évaluer un projet ou une politique publique ?</p>
+      <a href="/contact" class="btn btn-primary" style="background-color: var(--color-gold); border-color: var(--color-gold); color: var(--color-navy)">
+        Nous contacter
+      </a>
+    </div>
+  </section>
 </BaseLayout>

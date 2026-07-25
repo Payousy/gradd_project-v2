@@ -10,7 +10,6 @@ export default defineConfig({
       changefreq: "monthly",
       priority: 0.7,
       lastmod: new Date(),
-      customPages: ["https://www.gradd.sn/partenaires"],
     }),
   ],
   vite: {
@@ -18,7 +17,7 @@ export default defineConfig({
       alias: {
         "@styles": "/src/styles",
         "@components": "/src/components",
-        "@layouts": "/src/layouts",
+        "@layouts": "/src/components/layouts",
       },
     },
   },

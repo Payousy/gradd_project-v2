@@ -9,7 +9,6 @@ const pages = [
   { url: "/methodologie", priority: "0.8", changefreq: "monthly" },
   { url: "/actions", priority: "0.8", changefreq: "weekly" },
   { url: "/ressources", priority: "0.7", changefreq: "monthly" },
-  { url: "/actualites", priority: "0.7", changefreq: "weekly" },
   { url: "/contact", priority: "0.8", changefreq: "yearly" },
 ];
 
