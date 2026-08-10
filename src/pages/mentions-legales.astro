@@ -2,11 +2,112 @@
 import BaseLayout from "../components/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Mentions légales – GRADD">
-  <main>
-    <h1>Mentions légales</h1>
-    <p>
-      Groupe de Recherche Appliqué au Développement Durable (GRADD).
-    </p>
-  </main>
+<BaseLayout
+  title="Mentions légales — GRADD"
+  description="Mentions légales et politique de confidentialité du site GRADD."
+>
+  <div class="page-intro">
+    <div class="container">
+      <span class="section-eyebrow">Informations légales</span>
+      <h1>Mentions légales</h1>
+      <div class="gold-divider"></div>
+    </div>
+  </div>
+
+  <section class="section section--white">
+    <div class="container legal-content">
+
+      <h2>Éditeur du site</h2>
+      <p>
+        Le site www.gradd.sn est édité par GRADD (Groupe de Recherche Appliquée
+        au Développement Durable), Groupement d'Intérêt Économique (GIE), basé
+        à Dakar, Sénégal.
+      </p>
+      <p>
+        Contact : <a href="mailto:contact@gradd.sn">contact@gradd.sn</a>
+      </p>
+      <p>
+        Responsable de la publication : Papa Youssoupha SY.
+      </p>
+
+      <h2>Hébergement</h2>
+      <p>
+        Le site est hébergé par Netlify, Inc.<br />
+        44 Montgomery Street, Suite 300, San Francisco, California 94104, USA.<br />
+        <a href="https://www.netlify.com/" target="_blank" rel="noopener">www.netlify.com</a>
+      </p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des contenus présents sur ce site (textes, photographies,
+        logo, mise en page) est la propriété de GRADD, sauf mention contraire.
+        Toute reproduction, représentation ou diffusion, totale ou partielle,
+        sans autorisation préalable est interdite.
+      </p>
+
+      <h2>Protection des données personnelles</h2>
+      <p>
+        Le formulaire de contact du site collecte les données suivantes :
+        nom, adresse email, organisation (facultatif), sujet (facultatif) et
+        message. Ces données sont utilisées uniquement pour répondre à votre
+        demande et ne sont ni revendues ni transmises à des tiers à des fins
+        commerciales.
+      </p>
+      <p>
+        Les soumissions sont traitées par Netlify Forms, le service de
+        formulaires de notre hébergeur, puis transmises par email à GRADD.
+        Elles sont conservées le temps nécessaire au traitement de votre
+        demande.
+      </p>
+      <p>
+        Conformément à la loi sénégalaise n° 2008-12 du 25 janvier 2008 relative
+        à la protection des données à caractère personnel, vous disposez d'un
+        droit d'accès, de rectification et de suppression des données vous
+        concernant. Pour l'exercer, contactez-nous à{" "}
+        <a href="mailto:contact@gradd.sn">contact@gradd.sn</a>.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        Ce site n'utilise aucun cookie de suivi, de mesure d'audience ou de
+        publicité. Aucune donnée de navigation n'est collectée à des fins
+        commerciales ou statistiques.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Pour toute question relative à ces mentions légales, écrivez à{" "}
+        <a href="mailto:contact@gradd.sn">contact@gradd.sn</a>.
+      </p>
+
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+.legal-content {
+  max-width: 760px;
+}
+
+.legal-content h2 {
+  font-family: var(--font-display);
+  color: var(--color-navy);
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-3);
+}
+
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+
+.legal-content p {
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-3);
+}
+
+.legal-content a {
+  color: var(--color-navy);
+  font-weight: 600;
+}
+</style>
