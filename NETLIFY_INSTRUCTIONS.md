@@ -1,6 +1,6 @@
-# Configuration Netlify — Formulaire et webhook d'email
+# Configuration Netlify — Formulaire de contact
 
-Guide rapide pour activer Netlify Forms, configurer le webhook vers la Netlify Function `sendFormEmail` et définir les variables d'environnement.
+Guide rapide pour activer Netlify Forms et recevoir les soumissions du formulaire de contact par email.
 
 1. Déployer sur Netlify
 
@@ -8,46 +8,30 @@ Guide rapide pour activer Netlify Forms, configurer le webhook vers la Netlify F
 
 2. Activer Netlify Forms
 
-- Netlify détecte automatiquement les formulaires HTML qui ont `data-netlify="true"` et un champ `form-name`.
-- Vérifiez dans le tableau de bord : Site → Forms. Les soumissions apparaîtront ici.
+- Netlify détecte automatiquement le formulaire HTML de [contact.astro](src/pages/contact.astro), qui a `data-netlify="true"` et un champ `form-name`.
+- Vérifiez dans le tableau de bord : Site → Forms. Les soumissions y apparaissent directement, sans code ni fonction serverless.
 
-3. Configurer le webhook (pour envoi d'email)
+3. Recevoir les soumissions par email
 
-- URL du webhook à ajouter dans Netlify (Site → Forms → Settings → Notifications → Webhooks) :
+- Dans Netlify → Site configuration → Forms → Form notifications → Add notification → Email notification.
+- Indiquez l'adresse qui doit recevoir les messages (ex. contact@gradd.sn).
+- Aucune variable d'environnement ni clé API n'est nécessaire : Netlify envoie l'email lui-même.
 
-  https://<votre-site>.netlify.app/.netlify/functions/sendFormEmail
+4. Anti-spam
 
-- Méthode : POST
-- Payload : choisissez l'option qui envoie `fields` (ou le payload complet). La function `sendFormEmail` gère plusieurs formats.
-
-4. Définir les variables d'environnement (Netlify)
-
-- Dans Netlify → Site settings → Build & deploy → Environment → Environment variables, ajoutez :
-  - `RESEND_API_KEY` = votre clé Resend
-  - `CONTACT_TO_EMAIL` = adresse qui recevra les messages (ex. contact@gradd.com)
-  - `CONTACT_FROM_EMAIL` = adresse d'envoi (ex. noreply@votredomaine.com)
-
-Après avoir ajouté ces variables, redéployez le site.
+- Le formulaire inclut un champ honeypot (`bot-field`, `data-netlify-honeypot="bot-field"`) : les soumissions remplissant ce champ caché sont rejetées automatiquement par Netlify.
+- Netlify filtre aussi les soumissions via son propre système anti-spam (Akismet), consultable dans Site → Forms → Spam.
 
 5. Tester localement
 
-- Pour émuler les fonctions Netlify localement, installez le CLI Netlify et lancez :
+- Netlify Forms ne fonctionne qu'une fois déployé (le traitement se fait côté Netlify, pas dans `astro dev`). Pour tester en local, utilisez le CLI Netlify :
 
 ```
 npm install -g netlify-cli
 netlify dev
 ```
 
-- Le serveur local va émuler les fonctions et routes; vous pourrez soumettre le formulaire à `http://localhost:8888/contact`.
+6. Récapitulatif rapide
 
-6. Notes et dépannage
-
-- Si la function retourne une erreur 500, vérifiez que `RESEND_API_KEY` est défini dans les variables Netlify.
-- La function attend diverses formes de payload (array `fields`, `submission`, `payload`), donc le webhook Netlify standard doit marcher.
-- Si vous préférez une intégration directe (SendGrid, Mailgun), on peut adapter la function.
-
-7. Récapitulatif rapide
-
-- Formulaire : `data-netlify="true"`, `input name="form-name" value="contact"` et `action="/merci"`.
-- Webhook : `https://<votre-site>.netlify.app/.netlify/functions/sendFormEmail` (POST)
-- Variables Netlify : `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
+- Formulaire : `data-netlify="true"`, `input name="form-name" value="contact"`, `action="/merci"`, honeypot `bot-field`.
+- Notifications : configurées entièrement depuis le tableau de bord Netlify (Forms → Notifications), pas de code à maintenir.
