@@ -40,7 +40,7 @@ const competences = [
     </div>
 
     <div class="grid-auto fade-up">
-      {competences.map(e => (
+      {competences.slice(0, 3).map(e => (
         <div class="expertise-card">
           <h3>{e.title}</h3>
           <p>{e.desc}</p>

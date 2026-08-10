@@ -11,29 +11,20 @@
 - `Content-Security-Policy` — liste blanche des sources autorisées
 - `Strict-Transport-Security` — HTTPS obligatoire (6 mois)
 
-### Formulaire contact (api/contact.ts)
+### Formulaire contact (Netlify Forms)
 
-- Validation serveur : longueurs, format email, champs requis
-- Échappement HTML `escapeHtml()` sur toutes les données avant injection dans l'email
-- Honeypot anti-bot : champ `_hp` caché, si rempli → rejet silencieux
-- Aucune donnée sensible dans les messages d'erreur renvoyés au client
-- Secrets exclusivement via variables d'environnement (jamais hardcodés)
-
-### Variables d'environnement
-
-- `.env.local` exclu du Git (.gitignore)
-- `.env.example` fourni comme modèle sans valeurs réelles
-- Vérification au démarrage : si `RESEND_API_KEY` ou `CONTACT_TO_EMAIL` manquent → erreur 503 propre
+- Traitement entièrement délégué à Netlify (aucun code serveur, aucune donnée transitant par un service tiers custom)
+- Validation côté navigateur : longueurs, format email, champs requis (attributs HTML natifs)
+- Honeypot anti-bot natif Netlify : champ caché `bot-field`, rejet automatique si rempli
+- Filtrage anti-spam supplémentaire par Netlify (Akismet), consultable dans Site → Forms → Spam
+- Notifications par email configurées depuis le tableau de bord Netlify — aucun secret, clé API ou variable d'environnement à gérer côté code
 
 ---
 
 ## Checklist avant déploiement Netlify
 
-- [ ] Aller dans Netlify → Site settings → Environment variables
-- [ ] Ajouter `RESEND_API_KEY` (depuis resend.com)
-- [ ] Ajouter `CONTACT_TO_EMAIL` (email de réception des contacts)
-- [ ] Ajouter `CONTACT_FROM_EMAIL` (ex : noreply@gradd.sn, domaine vérifié dans Resend)
-- [ ] Vérifier que le dépôt GitHub ne contient PAS de fichier .env.local
+- [ ] Vérifier que Netlify Forms détecte bien le formulaire (Site → Forms, après un premier déploiement)
+- [ ] Configurer la notification email dans Site → Forms → Notifications (voir NETLIFY_INSTRUCTIONS.md)
 - [ ] Après déploiement : tester https://securityheaders.com avec l'URL du site
 
 ---

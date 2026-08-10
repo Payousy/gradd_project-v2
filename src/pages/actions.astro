@@ -36,7 +36,7 @@ const fiches = await Promise.all(
       <div class="grid-auto">
         {fiches.map(({ entry, rendered: { Content } }) => (
           <article class="card card--gold-bar">
-            <span style="display: inline-block; font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold); background: var(--color-gold-light); padding: 2px 8px; border-radius: 2px; margin-bottom: var(--space-3);">
+            <span style="display: inline-block; font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-navy); background: var(--color-gold-light); padding: 2px 8px; border-radius: 2px; margin-bottom: var(--space-3);">
               {entry.data.type}
             </span>
             <h3 style="font-family: var(--font-display); color: var(--color-navy); margin-bottom: var(--space-1);">{entry.data.title}</h3>

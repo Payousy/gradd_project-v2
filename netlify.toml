@@ -29,6 +29,15 @@
   [headers.values]
     Cache-Control = "public, max-age=3600, must-revalidate"
 
+# Domaine canonique : gradd.sn (apex) redirige vers www.gradd.sn
+# Nécessite que les deux domaines soient ajoutés dans Netlify (Domain management),
+# avec www.gradd.sn en domaine primaire.
+[[redirects]]
+  from = "https://gradd.sn/*"
+  to = "https://www.gradd.sn/:splat"
+  status = 301
+  force = true
+
 # Redirects pour les routes Astro
 [[redirects]]
   from = "/contact"

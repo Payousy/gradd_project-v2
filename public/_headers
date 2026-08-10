@@ -6,8 +6,10 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
   # Content Security Policy
-  # Autorise : ressources propres, Google Fonts, le nécessaire pour Netlify Forms
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.resend.com; frame-ancestors 'none';
+  # script-src : aucun script inline, uniquement nos fichiers /scripts/*.js
+  # style-src : 'unsafe-inline' nécessaire pour les attributs style="" utilisés dans les pages
+  # img-src : 'self' + data: uniquement, aucune image n'est chargée depuis un domaine externe
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none';
 
   # HTTPS obligatoire (6 mois, préchargeable)
   Strict-Transport-Security: max-age=15768000; includeSubDomains

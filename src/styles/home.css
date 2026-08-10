@@ -258,7 +258,7 @@
 }
 
 .home-hero-overlay h1 {
-  font-size: clamp(var(--text-2xl), 4.5vw, 1.2rem);
+  font-size: clamp(var(--text-2xl), 4.5vw, var(--text-4xl));
   color: var(--color-white);
   max-width: 500px;
   margin-bottom: var(--space-6);
@@ -343,10 +343,28 @@
   }
 }
 
-/* ── ABOUT (3 cards) ── */
+/* ── ABOUT (3 colonnes, traitement plat) ── */
 .about-section {
   background-color: var(--color-bg);
   padding: var(--space-24) 0;
+}
+
+.about-flat {
+  gap: var(--space-12);
+}
+
+.about-item {
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--color-gold);
+}
+
+.about-item h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-3);
+}
+
+.about-item p {
+  margin: 0;
 }
 
 /* ── EXPERTISE ── */
