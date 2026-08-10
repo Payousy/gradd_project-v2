@@ -1,6 +1,6 @@
 ---
-name: "Membre 10 — à renseigner"
-role: "Sociologue associé(e)"
+name: "Massamba DIAKHATE"
+role: "Membre du conseil d'administration"
 sectors: ["À préciser"]
 order: 10
 published: true

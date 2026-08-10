@@ -1,6 +1,6 @@
 ---
-name: "Membre 9 — à renseigner"
-role: "Sociologue associé(e)"
+name: "Ousseynou Diedhiou"
+role: "Commissaire aux comptes"
 sectors: ["À préciser"]
 order: 9
 published: true

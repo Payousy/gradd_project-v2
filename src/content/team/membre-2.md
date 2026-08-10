@@ -1,6 +1,6 @@
 ---
-name: "Membre 2 — à renseigner"
-role: "Sociologue associé(e)"
+name: "Omar THIAM"
+role: "Membre du conseil d'administration"
 sectors: ["À préciser"]
 order: 2
 published: true

@@ -1,5 +1,5 @@
 ---
-name: "Membre 8 — à renseigner"
+name: "Bara GAYE"
 role: "Sociologue associé(e)"
 sectors: ["À préciser"]
 order: 8

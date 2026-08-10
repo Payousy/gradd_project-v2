@@ -1,6 +1,6 @@
 ---
-name: "Membre 6 — à renseigner"
-role: "Sociologue associé(e)"
+name: "Soulayemane DIOUF"
+role: "Commissaire aux comptes"
 sectors: ["À préciser"]
 order: 6
 published: true

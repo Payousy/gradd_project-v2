@@ -1,6 +1,6 @@
 ---
-name: "Membre 4 — à renseigner"
-role: "Sociologue associé(e)"
+name: "Abdoulaye Moussa Diallo"
+role: "Président"
 sectors: ["À préciser"]
 order: 4
 published: true
