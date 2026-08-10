@@ -97,14 +97,4 @@ const jsonLd = {
   </section>
 </BaseLayout>
 
-<script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    },
-    { threshold: 0.12 }
-  );
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
+<script type="module" src="/scripts/fade-up.js" is:inline></script>
