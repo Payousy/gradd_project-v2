@@ -1,28 +1,30 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../components/layouts/BaseLayout.astro";
 import Hero from "../components/home/Hero.astro";
 import About from "../components/home/About.astro";
 import Expertise from "../components/home/Expertise.astro";
 import Methodologie from "../components/home/Methodologie.astro";
+import ranerouImage from "../assets/images/ranerou_new.png";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://gradd.sn/#website",
-      "url": "https://gradd.sn",
+      "@id": "https://www.gradd.sn/#website",
+      "url": "https://www.gradd.sn",
       "name": "GRADD — Cabinet d'études et de conseil au Sénégal",
       "description": "Cabinet sénégalais d'études et de conseil spécialisé en évaluation de politiques publiques, suivi-évaluation et développement durable.",
       "inLanguage": "fr",
-      "publisher": { "@id": "https://gradd.sn/#organisation" }
+      "publisher": { "@id": "https://www.gradd.sn/#organisation" }
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://gradd.sn/#organisation",
+      "@id": "https://www.gradd.sn/#organisation",
       "name": "GRADD",
       "legalName": "Groupe de Recherche Appliquée au Développement Durable",
-      "url": "https://gradd.sn",
+      "url": "https://www.gradd.sn",
       "description": "Cabinet sénégalais d'études et de conseil en sciences sociales, spécialisé en évaluation de politiques publiques, suivi-évaluation et développement durable en Afrique de l'Ouest.",
       "address": {
         "@type": "PostalAddress",
@@ -55,12 +57,15 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <section class="home-hero">
-    <img
-      src="/images/ranerou_new.png"
+    <Image
+      src={ranerouImage}
       alt="Engagement de GRADD pour le développement durable au Sénégal"
       class="home-hero-image"
-      width="1920"
-      height="700"
+      width={1920}
+      height={700}
+      format="avif"
+      quality={70}
+      priority
     />
     <div class="home-hero-overlay">
       <h1>Pour des politiques publiques<br />ancrées dans les réalités locales</h1>
