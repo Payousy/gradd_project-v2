@@ -1,9 +1,11 @@
 ---
 name: "Youssoupha TALL"
-role: "Membre du conseil d'administration : PHD |  Environmental and Development Socio-anthropologist  | Water, sanitation and climate change |"
-sectors: ["À préciser"]
+role: "Membre du conseil d'administration"
+sectors: ["Environnement", "Eau et assainissement", "Changement climatique"]
 order: 5
 published: true
 ---
 
-Biographie à compléter (parcours, spécialité, projets marquants).
+Docteur en socio-anthropologie de l'environnement et du développement
+(PHD), spécialisé dans les questions d'eau, d'assainissement et de
+changement climatique.

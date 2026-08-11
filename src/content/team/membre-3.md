@@ -1,11 +1,11 @@
 ---
 name: "Madiale CISSE"
 role: "Commissaire aux comptes"
-sectors: ["À préciser"]
+sectors: ["Environnement", "Eau et assainissement", "Changement climatique"]
 order: 3
 published: true
 ---
 
-Biographie à compléter (parcours, spécialité, projets marquants).
-
-PHD | Environmental and Development Socio-anthropologist | Water, sanitation and climate change |
+Docteur en socio-anthropologie de l'environnement et du développement
+(PHD), spécialisé dans les questions d'eau, d'assainissement et de
+changement climatique.
