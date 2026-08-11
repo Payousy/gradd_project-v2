@@ -1,9 +1,19 @@
 ---
 import BaseLayout from "../components/layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
-const equipe = (await getCollection("team", ({ data }) => data.published))
+const BIO_PLACEHOLDER = "Biographie à compléter (parcours, spécialité, projets marquants).";
+
+const equipeRaw = (await getCollection("team", ({ data }) => data.published))
   .sort((a, b) => a.data.order - b.data.order);
+
+const equipe = await Promise.all(
+  equipeRaw.map(async (membre) => ({
+    membre,
+    hasBio: membre.body?.trim() !== BIO_PLACEHOLDER,
+    rendered: await render(membre),
+  }))
+);
 ---
 
 <BaseLayout
@@ -91,7 +101,7 @@ const equipe = (await getCollection("team", ({ data }) => data.published))
     <div class="container">
       <div class="section-intro section-intro--center">
         <span class="section-eyebrow">L'équipe</span>
-        <h2 class="section-title">Dix sociologues associés</h2>
+        <h2 class="section-title">{equipe.length} membres associés</h2>
         <div class="gold-divider gold-divider--center"></div>
         <p class="section-lead">
           Une équipe pluridisciplinaire, réunissant des expériences de terrain
@@ -100,13 +110,18 @@ const equipe = (await getCollection("team", ({ data }) => data.published))
       </div>
 
       <div class="grid-auto">
-        {equipe.map(membre => (
-          <div class="card card--gold-bar" style="text-align: center;">
+        {equipe.map(({ membre, hasBio, rendered: { Content } }) => (
+          <div class="card card--gold-bar member-card">
             <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-navy); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: var(--text-lg); margin: 0 auto var(--space-4);">
               {membre.data.name.charAt(0)}
             </div>
             <h3 style="font-family: var(--font-display); color: var(--color-navy); margin-bottom: var(--space-1);">{membre.data.name}</h3>
             <p style="font-size: var(--text-sm); color: var(--color-muted); margin-bottom: var(--space-2);">{membre.data.role}</p>
+            {hasBio && (
+              <div class="member-bio">
+                <Content />
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -123,3 +138,22 @@ const equipe = (await getCollection("team", ({ data }) => data.published))
     </div>
   </section>
 </BaseLayout>
+
+<style>
+.member-card {
+  text-align: center;
+}
+
+.member-bio {
+  text-align: left;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.member-bio :global(p) {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  margin: 0;
+}
+</style>
