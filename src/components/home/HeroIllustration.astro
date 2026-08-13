@@ -1,0 +1,188 @@
+---
+export interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 1920 700"
+  preserveAspectRatio="xMidYMid slice"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <linearGradient id="hero-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6FA8C9" />
+      <stop offset="45%" stop-color="#B7D9E4" />
+      <stop offset="78%" stop-color="#EFDFA9" />
+      <stop offset="100%" stop-color="#FBEFC8" />
+    </linearGradient>
+    <radialGradient id="hero-sun-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF6DA" stop-opacity="0.95" />
+      <stop offset="45%" stop-color="#FFEBB0" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#FFEBB0" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="hero-sun-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFDF3" />
+      <stop offset="55%" stop-color="#FFE9A8" />
+      <stop offset="100%" stop-color="#F8CE6F" />
+    </radialGradient>
+    <linearGradient id="hero-hill-far" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#AED184" />
+      <stop offset="100%" stop-color="#8FBF6B" />
+    </linearGradient>
+    <linearGradient id="hero-ground" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7CB35B" />
+      <stop offset="100%" stop-color="#4F8C4A" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="700" fill="url(#hero-sky)" />
+
+  <circle cx="1480" cy="460" r="500" fill="url(#hero-sun-glow)" />
+
+  <!-- rayons -->
+  <g stroke="#FFF3CE" stroke-width="5" stroke-linecap="round" opacity="0.55">
+    <line x1="1480" y1="360" x2="1480" y2="285" transform="rotate(0 1480 460)" />
+    <line x1="1480" y1="360" x2="1480" y2="285" transform="rotate(45 1480 460)" />
+    <line x1="1480" y1="360" x2="1480" y2="285" transform="rotate(90 1480 460)" />
+    <line x1="1480" y1="360" x2="1480" y2="285" transform="rotate(135 1480 460)" />
+    <line x1="1480" y1="360" x2="1480" y2="285" transform="rotate(180 1480 460)" />
+    <line x1="1480" y1="360" x2="1480" y2="285" transform="rotate(225 1480 460)" />
+    <line x1="1480" y1="360" x2="1480" y2="285" transform="rotate(270 1480 460)" />
+    <line x1="1480" y1="360" x2="1480" y2="285" transform="rotate(315 1480 460)" />
+  </g>
+
+  <circle cx="1480" cy="460" r="100" fill="url(#hero-sun-core)" />
+  <circle cx="1480" cy="460" r="100" fill="none" stroke="#FFFDF3" stroke-width="2" opacity="0.6" />
+
+  <!-- far hill -->
+  <path
+    d="M0,510 C300,478 560,500 820,472 C1120,440 1400,478 1920,432 L1920,700 L0,700 Z"
+    fill="url(#hero-hill-far)"
+    opacity="0.8"
+  />
+
+  <!-- near ground -->
+  <path
+    d="M0,560 C280,528 520,548 780,520 C1080,486 1360,526 1920,484 L1920,700 L0,700 Z"
+    fill="url(#hero-ground)"
+  />
+
+  <!-- domaines : durabilité (économie / société / environnement) + santé -->
+  <circle cx="1793" cy="168" r="145" fill="#FFFDF3" opacity="0.4" />
+  <g stroke-width="4" fill="none" opacity="0.95">
+    <circle cx="1798" cy="128" r="50" stroke="#C9A84C" />
+    <circle cx="1750" cy="162" r="50" stroke="#4A7C97" />
+    <circle cx="1846" cy="162" r="50" stroke="#3E7A34" />
+  </g>
+  <g>
+    <circle cx="1793" cy="255" r="38" fill="#FFFDF3" opacity="0.6" />
+    <path
+      d="M1793,282 C1764,260 1764,238 1781,233 C1788,231 1793,237 1793,242 C1793,237 1798,231 1805,233 C1822,238 1822,260 1793,282 Z"
+      fill="#4A7C97"
+      stroke="#FFFDF3"
+      stroke-width="2"
+    />
+    <path
+      d="M1768,254 L1779,254 L1785,240 L1793,266 L1799,247 L1805,254 L1820,254"
+      stroke="#FBEFC8"
+      stroke-width="3"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- réseau de données / territoires -->
+  <g stroke="#2E5C3D" stroke-width="1.5" stroke-opacity="0.25" fill="none">
+    <path d="M680,470 L780,380 L900,440" />
+    <path d="M780,380 L980,330 L1100,430" />
+    <path d="M900,440 L1100,430 L1180,350" />
+    <path d="M980,330 L1180,350" />
+    <path d="M1100,430 L1260,470 M1100,430 L1050,530" />
+    <path d="M900,440 L830,530" />
+    <path d="M680,470 L830,530" />
+  </g>
+  <g fill="#C9A84C">
+    <circle cx="680" cy="470" r="5" opacity="0.9" />
+    <circle cx="780" cy="380" r="7" opacity="0.95" />
+    <circle cx="900" cy="440" r="5" opacity="0.9" />
+    <circle cx="980" cy="330" r="6" opacity="0.9" />
+    <circle cx="1100" cy="430" r="8" />
+    <circle cx="1180" cy="350" r="5" opacity="0.9" />
+    <circle cx="1260" cy="470" r="6" opacity="0.9" />
+    <circle cx="1050" cy="530" r="4" opacity="0.8" />
+    <circle cx="830" cy="530" r="4" opacity="0.8" />
+  </g>
+
+  <!-- bosquets -->
+  <g fill="#5E9A54">
+    <ellipse cx="190" cy="560" rx="46" ry="28" />
+    <ellipse cx="150" cy="576" rx="34" ry="22" fill="#71AD5F" />
+    <ellipse cx="228" cy="578" rx="30" ry="20" fill="#4F8C4A" />
+  </g>
+  <g fill="#5E9A54">
+    <ellipse cx="1010" cy="520" rx="40" ry="24" />
+    <ellipse cx="978" cy="534" rx="28" ry="18" fill="#71AD5F" />
+  </g>
+  <g fill="#4F8C4A">
+    <ellipse cx="1500" cy="566" rx="44" ry="26" />
+    <ellipse cx="1468" cy="580" rx="30" ry="18" fill="#5E9A54" />
+  </g>
+
+  <!-- jeunes pousses : croissance durable -->
+  <g>
+    <path d="M300,600 C298,564 302,524 306,490" stroke="#3E6B3A" stroke-width="5" stroke-linecap="round" fill="none" />
+    <ellipse cx="284" cy="504" rx="27" ry="16" fill="#7FA55E" transform="rotate(-28 284 504)" />
+    <ellipse cx="328" cy="490" rx="27" ry="16" fill="#8FB870" transform="rotate(24 328 490)" />
+    <ellipse cx="306" cy="470" rx="23" ry="14" fill="#71AD5F" transform="rotate(-4 306 470)" />
+  </g>
+  <g>
+    <path d="M1350,606 C1349,584 1352,562 1355,544" stroke="#3E6B3A" stroke-width="4" stroke-linecap="round" fill="none" />
+    <ellipse cx="1338" cy="556" rx="18" ry="11" fill="#8FB870" transform="rotate(-26 1338 556)" />
+    <ellipse cx="1368" cy="548" rx="18" ry="11" fill="#7FA55E" transform="rotate(24 1368 548)" />
+  </g>
+
+  <!-- touffes d'herbe -->
+  <g stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7">
+    <path d="M420,610 L415,586 M428,610 L428,584 M436,610 L442,588" stroke="#3E6B3A" />
+    <path d="M1620,614 L1615,592 M1628,614 L1628,588 M1636,614 L1642,592" stroke="#4F8C4A" />
+    <path d="M120,624 L115,602 M128,624 L128,598 M136,624 L142,604" stroke="#3E6B3A" />
+  </g>
+
+  <!-- baobab -->
+  <g opacity="0.95">
+    <path
+      d="M1633,472 C1627,508 1623,556 1625,598 L1677,598 C1679,556 1675,508 1669,472 Z"
+      fill="#5C4128"
+    />
+    <path d="M1625,596 C1610,600 1598,610 1592,624" stroke="#5C4128" stroke-width="8" stroke-linecap="round" fill="none" />
+    <path d="M1677,596 C1692,600 1704,610 1710,624" stroke="#5C4128" stroke-width="8" stroke-linecap="round" fill="none" />
+    <g fill="#5C4128">
+      <circle cx="1651" cy="430" r="72" />
+      <circle cx="1596" cy="412" r="54" />
+      <circle cx="1710" cy="416" r="56" />
+      <circle cx="1651" cy="384" r="48" />
+      <circle cx="1670" cy="462" r="42" />
+      <circle cx="1614" cy="458" r="38" />
+    </g>
+    <g fill="#5E9A54" opacity="0.5">
+      <ellipse cx="1600" cy="588" rx="26" ry="14" />
+      <ellipse cx="1702" cy="588" rx="26" ry="14" />
+    </g>
+  </g>
+
+  <!-- fine texture -->
+  <g fill="#FFF3CE" opacity="0.4">
+    <circle cx="240" cy="180" r="2" />
+    <circle cx="340" cy="120" r="2" />
+    <circle cx="1120" cy="120" r="2" />
+    <circle cx="1600" cy="150" r="2" />
+    <circle cx="150" cy="340" r="2" />
+    <circle cx="1820" cy="300" r="2" />
+  </g>
+</svg>

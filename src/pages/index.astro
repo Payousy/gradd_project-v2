@@ -1,11 +1,10 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "../components/layouts/BaseLayout.astro";
 import Hero from "../components/home/Hero.astro";
 import About from "../components/home/About.astro";
 import Expertise from "../components/home/Expertise.astro";
 import Methodologie from "../components/home/Methodologie.astro";
-import ranerouImage from "../assets/images/ranerou_new.png";
+import HeroIllustration from "../components/home/HeroIllustration.astro";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -57,16 +56,7 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <section class="home-hero">
-    <Image
-      src={ranerouImage}
-      alt="Engagement de GRADD pour le développement durable au Sénégal"
-      class="home-hero-image"
-      width={1920}
-      height={700}
-      format="avif"
-      quality={70}
-      priority
-    />
+    <HeroIllustration class="home-hero-image" />
     <div class="home-hero-overlay">
       <h1>Pour des politiques publiques<br />ancrées dans les réalités locales</h1>
       <p>
